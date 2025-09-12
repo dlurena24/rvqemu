@@ -10,18 +10,12 @@ Este proyecto proporciona un entorno completo para desarrollo y depuración de p
 .
 ├── Dockerfile
 ├── run.sh
-├── examples/           # Ejemplos de código
-│   ├── asm-only/      # Ejemplo de ensamblador puro
-│   │   ├── test.s
-│   │   ├── linker.ld
-│   │   ├── build.sh
-│   │   └── run-qemu.sh
-│   └── c-asm/         # Ejemplo de C + ensamblador
-│       ├── example.c
-│       ├── math_asm.s
-│       ├── linker.ld
-│       ├── build.sh
-│       └── run-qemu.sh
+├── tea/ 
+│   ├── tea_main.c
+│   ├── tea_asm.s
+│   ├── linker.ld
+│   ├── build.sh
+│   └── run-qemu.sh
 └── README.md
 ```
 
@@ -47,14 +41,9 @@ chmod +x run.sh
 ./run.sh
 ```
 
-### Paso 2: Elegir y compilar un ejemplo
+### Paso 2: Compilar el proyecto
 ```bash
-# Para el ejemplo de ensamblador puro
-cd /home/rvqemu-dev/workspace/examples/asm-only
-./build.sh
-
-# Para el ejemplo de C + ensamblador
-cd /home/rvqemu-dev/workspace/examples/c-asm
+cd /workspace/examples/asm-only
 ./build.sh
 ```
 
@@ -65,7 +54,7 @@ cd /home/rvqemu-dev/workspace/examples/c-asm
 
 # En otra terminal: conectar GDB
 docker exec -it rvqemu /bin/bash
-cd /home/rvqemu-dev/workspace/examples/[ejemplo-elegido]
+cd /workspace/examples/[ejemplo-elegido]
 gdb-multiarch [archivo-elf]
 ```
 
@@ -103,9 +92,7 @@ monitor quit           # Finalizar sesión
 
 ---
 
-## 4. Detalles de los ejemplos
+## 4. Detalles del proyecto
 
-Para información específica sobre cada ejemplo, consultar:
-- [`examples/asm-only/README.md`](examples/asm-only/README.md) - Ensamblador puro
-- [`examples/c-asm/README.md`](examples/c-asm/README.md) - C + Ensamblador
-- [`examples/README.md`](examples/README.md) - Información general
+Para información específica sobre el proyecto, consultar:
+- [`tea/README.md`](tea/README.md) - Información general sobre ejecución del proyecto.
