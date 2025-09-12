@@ -64,7 +64,7 @@ Para facilitar la depuración, puede usar los comandos archivo `debug_test.gdb`:
 
 # En otra terminal: ejecutar script de GDB
 docker exec -it rvqemu_dev /bin/bash
-cd /home/rvqemu-dev/workspace/tea
+cd /workspace/tea
 gdb-multiarch tea.elf 
 ```
 
@@ -108,7 +108,7 @@ Para seguir al siguiente paso de los ejemplos, puedes escribir "c" en la termina
 - `sp`: Puntero de pila
 
 - `a0`--`a7`: Parámetros
-- `a0`(y `a1` si son 64 bits): Valor de retorno
+- `a0` (y `a1` si son 64 bits): Valor de retorno
 - `s0-s11`: Registros salvados
 - `t0-t6`: Registros temporales
 - `ra`: Dirección de retorno
