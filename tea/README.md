@@ -121,3 +121,10 @@ convenciones:\
 2. Usan parámetros desde `a0`-`a3`
 3. Devuelven los resultados en `a0`-`a1`
 4. Restauran registros antes de `ret`
+
+## Evidencias de funcionamiento
+### Salida de terminal GDB 
+![Salida de terminal GDB](Evidencias/1.png)
+
+### Salida en terminal QEMU después de correr las pruebas
+![Salida de QEMU](Evidencias/2.png)

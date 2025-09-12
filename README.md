@@ -1,6 +1,8 @@
-# Entorno de desarrollo RISC-V con QEMU y GDB
+# Proyecto Individual: Implementación de Cifrado TEA usando C y Ensamblador RISC-V en QEMU
 
-Este proyecto proporciona un entorno completo para desarrollo y depuración de programas bare-metal en arquitectura RISC-V de 32 bits, utilizando QEMU y GDB dentro de un contenedor Docker.
+El propósito del desarrollo de este proyecto es implementar un algoritmo de cifrado TEA (Tiny Encryption Algorithm) utilizando un entorno RISC-V, mediante la implementación de lógica de alto nivel en lenguaje C, mientras se implementa las funciones de cifrado y descifrado críticas se implementan en ensamblador RISC-V.
+Este proyecto fue creado a partir de un fork realizado al repositorio https://gitlab.com/jgonzalez.tec/rvqemu/, tomándose éste como base para el desarrollo del proyecto.
+Desarrollado por el estudiante Daniel Ureña López, carné institucional 2020425815, Tecnológico de Costa Rica.
 
 ---
 
@@ -19,17 +21,9 @@ Este proyecto proporciona un entorno completo para desarrollo y depuración de p
 └── README.md
 ```
 
-- `examples/` contiene diferentes ejemplos de programas RISC-V
+- `tea/` contiene los archivos relacionados al proyecto desarrollado
 - `Dockerfile` define la imagen que incluye el emulador QEMU y el toolchain RISC-V
 - `run.sh` automatiza la construcción de la imagen y la ejecución del contenedor
-
-## Ejemplos disponibles
-
-### Ensamblador puro (`examples/asm-only/`)
-Programa simple escrito completamente en ensamblador que calcula la suma del 1 al 10.
-
-### C + Ensamblador (`examples/c-asm/`)
-Programa en C que llama funciones escritas en ensamblador, demostrando la integración entre ambos lenguajes. Este ejemplo incluye un archivo de inicio (startup.s) que inicializa la pila y llama a la función main de C, ya que los programas C necesitan un entorno de ejecución básico antes de ejecutar el código principal.
 
 ---
 
@@ -43,7 +37,7 @@ chmod +x run.sh
 
 ### Paso 2: Compilar el proyecto
 ```bash
-cd /workspace/examples/asm-only
+cd /workspace/tea
 ./build.sh
 ```
 
@@ -53,8 +47,8 @@ cd /workspace/examples/asm-only
 ./run-qemu.sh
 
 # En otra terminal: conectar GDB
-docker exec -it rvqemu /bin/bash
-cd /workspace/examples/[ejemplo-elegido]
+docker exec -it rvqemu_dev /bin/bash
+cd /workspace/tea
 gdb-multiarch [archivo-elf]
 ```
 
@@ -63,7 +57,7 @@ gdb-multiarch [archivo-elf]
 ## 3. Uso detallado
 
 ### Construcción del contenedor
-El script `run.sh` construye la imagen `rvqemu` y crea un contenedor interactivo que monta el directorio del proyecto en `/home/rvqemu-dev/workspace`.
+El script `run.sh` construye la imagen `rvqemu` y crea un contenedor interactivo que monta el directorio del proyecto en `/workspace`.
 
 ### Compilación
 Cada ejemplo incluye un script `build.sh` que maneja la compilación automáticamente.
