@@ -126,5 +126,11 @@ convenciones:\
 ### Salida de terminal GDB 
 ![Salida de terminal GDB](Evidencias/1.png)
 
+En esta imagen se observa la terminal de GDB conectado a QEMU despues de haber ejecutado ambos casos de pruebas, con dos layouts activos, uno de ellos es el layout activo de registros (layout superior), el cual se activó gracias a que se corrió el comando "layout regs", en donde se pueden observar los registros generales del procesador RISC V, entre ellos se observan los registros ra (direccion de retorno), sp (puntero de pila actual), y tambien los registros temporales (t0, t1, t2). Este layout es útil para observar cómo cambian los registros en tiempo real cada vez que se avanza con el comando "c" o "continue".
+Además, tambien se puede observar el layout de ensamblador (layout inferior), este layout se encuentra activo gracias a que se corrió el comando "layout asm", aqui se muestran las instrucciones de máquina desensambladas en la función actual (tea_decrypt en este caso). La utilidad de este layout se centra en que da el contexto exacto de las instrucciones que se están ejecutando en el momento, sin necesidad de abrir el código desarrollado.
+
 ### Salida en terminal QEMU después de correr las pruebas
 ![Salida de QEMU](Evidencias/2.png)
+
+Aqui se observa la salida en terminal en donde se ejecutó ./run-qemu.sh, y se imprimen los resultados de las dos pruebas definidas en tea_main.c.
+Para cada una de las pruebas se muestra el mensaje original, el cifrado en hexadecimal (mostrado en bloques de 64 bits), y el decifrado en ASCII (en la segunda prueba se muestra dividido en bloques de 8 caracteres por el esquema de padding, visualizandose en el ultimo bloque el relleno por padding mediante el uso de puntos). La salida de QEMU valida la correcta implementación del algoritmo TEA tanto en cifrado como descifrado de mensajes cortos y largos.
